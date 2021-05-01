@@ -14,4 +14,10 @@ public enum RequestType {
         this.name = name;
     }
 
+    public static Optional<RequestType> of(String name){
+        return Arrays.stream(RequestType.values())
+                .filter(x -> x.name.equalsIgnoreCase(name))
+                .findFirst();
+    }
+
 }

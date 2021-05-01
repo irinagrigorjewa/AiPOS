@@ -39,5 +39,11 @@ public enum ContentType {
         return reader;
     }
 
-
+    public static ContentType findByFileName(String fileName){
+        String extension = fileName.substring(fileName.lastIndexOf(".")+1);
+        return Arrays.stream(ContentType.values())
+                .filter(x -> x.getExtension().equalsIgnoreCase(extension))
+                .findFirst()
+                .orElse(PLAIN);
+    }
 }
